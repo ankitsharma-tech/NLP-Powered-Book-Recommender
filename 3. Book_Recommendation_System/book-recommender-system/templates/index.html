@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
+            margin-top: 60px; /* Adjusted margin */
+        }
+
+    
+        .navbar {
+            background-color: #007bff;
+            position: fixed; /* Makes the navbar fixed */
+            top: 0; /* Aligns it to the top */
+            left: 0; /* Aligns it to the left */
+            right: 0; /* Ensures it covers the full width */
+            z-index: 1000; /* Ensures it stays above other content */
+        }
+    
+        .navbar-brand, .navbar-nav li a {
+            color: white !important;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+    
+        h1 {
+            color: #343a40;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 2.5rem;
+        }
+    
+        .book-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            height: 350px; /* Fixed height for uniformity */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    
+        .book-card img {
+            max-width: 100%;
+            height: 200px; /* Fixed image height */
+            object-fit: cover; /* Ensure image fills the space */
+            border-radius: 5px;
+        }
+    
+        .book-card h4, .book-card p {
+            color: #007bff;
+            font-weight: bold;
+        }
+    
+        .book-card h4 {
+            font-size: 1.2rem;
+        }
+    
+        .book-card p {
+            font-size: 1rem;
+        }
+    
+        .book-card .votes, .book-card .rating {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Ensure consistent spacing between cards */
+        }
+    
+        .col-md-3 {
+            flex: 1 1 calc(25% - 20px); /* Ensures 4 columns with gaps */
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Book Recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <!-- <li><a href="#">Contact</a></li> -->
+        </ul>
+    </nav>
+
+    
+    <!-- <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Book Recommender</a>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/recommend">Recommend</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+    
+
+    <div class="container">
+        <h1>Top 50 Books</h1>
+        <div class="row">
+            {% for i in range(book_name|length) %}
+            <div class="col-md-3">
+                <div class="book-card">
+                    <img src="{{ image[i] }}" alt="Book Image">
+                    <h4>{{ book_name[i] }}</h4>
+                    <p>{{ author[i] }}</p>
+                    <p class="votes">Votes: {{ votes[i] }}</p>
+                    <p class="rating">Rating: {{ rating[i] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
